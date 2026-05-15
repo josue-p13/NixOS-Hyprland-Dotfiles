@@ -1,4 +1,4 @@
-# 🌲 Josué's NixOS Dotfiles (Gruvbox Style)
+# 🌲 NixOS Dotfiles (Gruvbox Style)
 
 ¡Bienvenido a mi configuración personal de NixOS con Hyprland! Este setup está diseñado para ser estético, funcional y optimizado para hardware híbrido (Intel/NVIDIA), siguiendo una paleta de colores **Gruvbox** con un toque moderno estilo GNOME.
 
