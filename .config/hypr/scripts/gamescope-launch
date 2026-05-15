@@ -1,0 +1,22 @@
+#!/bin/bash
+# Gamescope launcher for Hyprland + NVIDIA hybrid gaming
+# Usage: gamescope-launch <command>
+
+MONITOR=$(hyprctl monitors -j | python3 -c "
+import json, sys
+for m in json.load(sys.stdin):
+    if 'HDMI' in m['name'] or 'DP' in m['name']:
+        print(f\"{m['name']},{m['width']},{m['height']},{int(m['refreshRate'])}\")
+        break
+" 2>/dev/null)
+
+if [ -n "$MONITOR" ]; then
+    NAME=$(echo "$MONITOR" | cut -d, -f1)
+    W=$(echo "$MONITOR" | cut -d, -f2)
+    H=$(echo "$MONITOR" | cut -d, -f3)
+    R=$(echo "$MONITOR" | cut -d, -f4)
+else
+    W=1920; H=1080; R=144
+fi
+
+exec gamescope -W "$W" -H "$H" -r "$R" -f --adaptive-sync -- "$@"

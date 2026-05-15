@@ -1,0 +1,70 @@
+window {
+    margin: 0px;
+    border: 3px solid #fe8019;
+    background-color: rgba(40, 40, 40, 0.9);
+    border-radius: 15px;
+    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+}
+
+#input {
+    margin: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: #ebdbb2;
+    background-color: #3c3836;
+    font-size: 18px;
+    placeholder-color: #a89984;
+}
+
+#inner-box {
+    margin: 15px;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 0px;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 10px;
+    border: none;
+}
+
+/* Intentando simular un grid/carousel con columnas si wofi lo soporta bien */
+#text {
+    margin: 10px;
+    color: #ebdbb2;
+    font-size: 14px;
+    font-weight: bold;
+    horizontal-align: 0.5;
+}
+
+#img {
+    margin: 5px;
+    border-radius: 10px;
+    border: 3px solid #3c3836;
+}
+
+#entry {
+    padding: 15px;
+    border-radius: 15px;
+    background-color: transparent;
+    margin: 10px;
+    transition: 0.2s;
+}
+
+#entry:selected {
+    background-color: #3c3836;
+    border: 3px solid #fabd2f;
+    box-shadow: 0px 0px 15px rgba(250, 189, 47, 0.5);
+}
+
+#entry:selected #text {
+    color: #fabd2f;
+}
+
+#entry:selected #img {
+    border: 3px solid #fabd2f;
+}

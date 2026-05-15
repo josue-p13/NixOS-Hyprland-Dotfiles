@@ -1,0 +1,10 @@
+mode=drun
+show=drun
+width=600
+height=350
+allow_markup=true
+no_actions=true
+halign=fill
+orientation=vertical
+content_halign=fill
+prompt=Buscar aplicaciones...

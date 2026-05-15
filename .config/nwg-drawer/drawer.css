@@ -1,0 +1,35 @@
+window {
+    background-color: #282828;
+    color: #ebdbb2;
+}
+
+box {
+    background-color: transparent;
+}
+
+entry {
+    background-color: #3c3836;
+    color: #ebdbb2;
+    border: 2px solid #fe8019;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+button {
+    background-color: transparent;
+    color: #ebdbb2;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #504945;
+}
+
+label {
+    color: #ebdbb2;
+}
+
+#category-button:checked {
+    background-color: #fe8019;
+    color: #282828;
+}

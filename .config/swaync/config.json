@@ -1,0 +1,68 @@
+{
+    "$schema": "/etc/xdg/swaync/configSchema.json",
+    "positionX": "right",
+    "positionY": "top",
+    "control-center-width": 380,
+    "control-center-margin-top": 5,
+    "control-center-margin-bottom": 5,
+    "control-center-margin-right": 10,
+    "control-center-margin-left": 10,
+    "widgets": [
+        "title",
+        "dnd",
+        "mpris",
+        "volume",
+        "backlight",
+        "buttons-grid",
+        "notifications"
+    ],
+    "widget-config": {
+        "title": {
+            "text": "Centro de Control",
+            "clear-all-button": true,
+            "button-text": "Limpiar"
+        },
+        "dnd": {
+            "text": "No Molestar"
+        },
+        "volume": {
+            "label": " "
+        },
+        "backlight": {
+            "label": " ",
+            "device": "intel_backlight"
+        },
+        "mpris": {
+            "image-size": 96,
+            "image-radius": 12
+        },
+        "buttons-grid": {
+            "actions": [
+                {
+                    "label": " Bluetooth",
+                    "command": "blueman-manager"
+                },
+                {
+                    "label": " WiFi",
+                    "command": "nm-connection-editor"
+                },
+                {
+                    "label": " Noche",
+                    "command": "/home/josue/.config/hypr/scripts/toggle-nightlight.sh"
+                },
+                {
+                    "label": "󰍹 Pantalla",
+                    "command": "/home/josue/.config/hypr/scripts/refresh-rate-menu.sh"
+                },
+                {
+                    "label": "󰓃 Audio",
+                    "command": "/home/josue/.config/hypr/scripts/audio-menu.sh"
+                },
+                {
+                    "label": "⚙ Config",
+                    "command": "gnome-control-center"
+                }
+            ]
+        }
+    }
+}
