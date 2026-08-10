@@ -1,0 +1,20 @@
+{
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+    "default_mode": "normal",
+  },
+  "base_keymap": "VSCode",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Material Icon Theme",
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "Wallust",
+    "dark": "Wallust",
+  },
+}

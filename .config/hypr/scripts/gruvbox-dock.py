@@ -6,6 +6,7 @@ import os
 import subprocess
 import signal
 import threading
+import json
 gi.require_version('Gtk', '3.0')
 gi.require_version('GtkLayerShell', '0.1')
 from gi.repository import Gtk, GtkLayerShell, GLib, Gdk
@@ -13,23 +14,35 @@ from gi.repository import Gtk, GtkLayerShell, GLib, Gdk
 FIFO = "/tmp/gruvbox_dock_fifo"
 
 APPS = [
-    ("Brave", "brave", ""),
+    ("Zen", "zen-beta", ""),
     ("Code", "code", "󰨞"),
     ("WhatsApp", "brave --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm", ""),
-    ("Warp", "warp-terminal", ""),
-    ("Files", "nautilus", ""),
+    ("Zed", "zeditor", "󰏫"),
     ("Spotify", "spotify", ""),
-    ("Steam", "/home/josue/.config/hypr/scripts/prime-run steam", ""),
     ("Mail", "thunderbird", ""),
-    ("Ghostty", "ghostty", ""),
-    ("Affinity", "/home/josue/.config/hypr/scripts/affinity-launch.sh", "󰏘"),
 ]
 
-GRUVBOX = {
-    "bg": "#282828", "bg2": "#3c3836", "bg3": "#504945",
-    "fg": "#ebdbb2", "orange": "#fe8019", "yellow": "#fabd2f",
-    "purple": "#d3869b", "gray": "#928374",
-}
+def get_colors():
+    cache_file = os.path.expanduser("~/.cache/wallust/colors.json")
+    c = {
+        "bg": "#282828", "bg2": "#3c3836", "bg3": "#504945",
+        "fg": "#ebdbb2", "orange": "#fe8019", "yellow": "#fabd2f",
+        "purple": "#d3869b", "gray": "#928374",
+    }
+    if os.path.exists(cache_file):
+        try:
+            with open(cache_file, "r") as f:
+                w = json.load(f)
+                cl = w['colors']
+                c.update({
+                    "bg": w['background'], "bg2": cl['color8'], "bg3": cl['color0'],
+                    "fg": w['foreground'], "orange": cl['color9'], "yellow": cl['color3'],
+                    "purple": cl['color5'], "gray": cl['color7']
+                })
+        except: pass
+    return c
+
+GRUVBOX = get_colors()
 
 class GruvboxDock(Gtk.Window):
     def __init__(self):
@@ -79,7 +92,7 @@ class GruvboxDock(Gtk.Window):
             padding: 6px 8px;
         }}
         .d-item-active {{
-            background-color: {GRUVBOX["bg2"]};
+            background-color: transparent;
             border: 2px solid {GRUVBOX["orange"]};
             border-radius: 14px;
             padding: 4px 6px;

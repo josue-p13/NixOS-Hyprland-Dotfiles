@@ -1,0 +1,42 @@
+# ~/.config/yazi/yazi.toml
+# Configuración básica para Yazi en el setup de Josué
+
+[manager]
+ratio          = [ 1, 3, 4 ]
+sort_by        = "name"
+sort_sensitive = true
+sort_reverse   = false
+sort_dir_first = true
+show_hidden    = true
+show_symlink   = true
+
+[preview]
+tab_size        = 4
+max_width       = 1200
+max_height      = 800
+image_quality   = 75
+
+# Ghostty soporta nativamente el protocolo de kitty para imágenes.
+# Yazi detectará esto automáticamente, pero configuramos parámetros de preview óptimos.
+
+[opener]
+edit = [
+	{ run = 'nvim "$@"', block = true, desc = "Neovim" }
+]
+play = [
+	{ run = 'mpv "$@"', orphan = true, desc = "Play" }
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" }
+]
+
+[open]
+rules = [
+	{ name = "*/", use = [ "edit", "open" ] },
+	{ mime = "text/*", use = [ "edit", "open" ] },
+	{ mime = "application/json", use = [ "edit", "open" ] },
+	{ mime = "application/javascript", use = [ "edit", "open" ] },
+	{ mime = "image/*", use = [ "open" ] },
+	{ mime = "{audio,video}/*", use = [ "play", "open" ] },
+	{ mime = "application/pdf", use = [ "open" ] },
+]

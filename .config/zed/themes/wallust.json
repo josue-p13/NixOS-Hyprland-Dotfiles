@@ -1,0 +1,54 @@
+{
+  "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
+  "name": "Wallust Dynamic Theme",
+  "author": "Josue Setup",
+  "themes": [
+    {
+      "name": "Wallust",
+      "appearance": "dark",
+      "style": {
+        "background": "#2C2625d8",
+        "foreground": "#F0F0E6",
+        "accent": "#E9B143",
+        "border": "#524B4A",
+        "border.variant": "#524B4A",
+        "editor.background": "#2C2625c0",
+        "editor.foreground": "#F0F0E6",
+        "editor.gutter.background": "#2C262500",
+        "editor.gutter.foreground": "#9D9E94",
+        "editor.line_number": "#9D9E94",
+        "editor.active_line_number": "#E0E2D3",
+        "editor.line.background": "#524B4A22",
+        "editor.active_line.background": "#524B4A44",
+        "editor.selection.background": "#E9B14333",
+        "editor.wrap_guide.background": "#524B4A",
+        "tab.active.background": "#2C262588",
+        "tab.active.border": "#E9B143",
+        "tab.inactive.background": "#2C2625aa",
+        "tab.inactive.foreground": "#9D9E94",
+        "status_bar.background": "#2C2625f2",
+        "title_bar.background": "#2C2625f2",
+        "sidebar.background": "#2C2625e6",
+        "panel.background": "#2C2625e6",
+        "syntax": {
+          "comment": { "color": "#9D9E94", "font_style": "italic" },
+          "string": { "color": "#928374" },
+          "string.escape": { "color": "#E9B143" },
+          "string.regex": { "color": "#E9B143" },
+          "number": { "color": "#E9B143" },
+          "boolean": { "color": "#E9B143" },
+          "keyword": { "color": "#7DAEA3", "font_weight": 700 },
+          "function": { "color": "#4C7A5D" },
+          "variable": { "color": "#E0E2D3" },
+          "type": { "color": "#E9B143" },
+          "constant": { "color": "#E9B143" },
+          "property": { "color": "#D3D5B8" },
+          "tag": { "color": "#7DAEA3" },
+          "attribute": { "color": "#4C7A5D" },
+          "constructor": { "color": "#E9B143" },
+          "embedded": { "color": "#F0F0E6" }
+        }
+      }
+    }
+  ]
+}

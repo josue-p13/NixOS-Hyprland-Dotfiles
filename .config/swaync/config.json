@@ -40,11 +40,11 @@
             "actions": [
                 {
                     "label": " Bluetooth",
-                    "command": "blueman-manager"
+                    "command": "/home/josue/.config/hypr/scripts/bluetooth-menu.sh"
                 },
                 {
                     "label": " WiFi",
-                    "command": "nm-connection-editor"
+                    "command": "/home/josue/.config/hypr/scripts/wifi-menu.sh"
                 },
                 {
                     "label": " Noche",
@@ -59,8 +59,8 @@
                     "command": "/home/josue/.config/hypr/scripts/audio-menu.sh"
                 },
                 {
-                    "label": "⚙ Config",
-                    "command": "gnome-control-center"
+                    "label": " Mixer",
+                    "command": "/home/josue/.config/hypr/scripts/mixer-menu.sh"
                 }
             ]
         }

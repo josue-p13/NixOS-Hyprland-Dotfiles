@@ -1,114 +1,102 @@
+@import "../../.cache/wallust/colors-swaync.css";
+
 * {
     font-family: "JetBrainsMono Nerd Font", "Roboto", Helvetica, Arial, sans-serif;
+    transition: all 0.3s ease;
 }
 
-.control-center .notification-row:focus,
-.control-center .notification-row:hover {
-    opacity: 1;
-    background: #3c3836;
-}
-
-.notification-row {
-    outline: none;
-    margin: 10px;
-    padding: 0;
-}
-
-.notification {
-    background: #282828;
-    padding: 0;
-    margin: 0px;
-    border-radius: 8px;
-    border: 2px solid #3c3836;
-    color: #ebdbb2;
-}
-
-.notification-content {
-    background: transparent;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.close-button {
-    background: #fb4934;
-    color: #282828;
-    text-shadow: none;
-    padding: 0;
-    border-radius: 4px;
-    margin-top: 5px;
-    margin-right: 5px;
-}
-
-.close-button:hover {
-    box-shadow: none;
-    background: #cc241d;
-    transition: all .15s ease-in-out;
-    border: none;
-}
-
-.notification-action {
-    border: 2px solid #3c3836;
-    border-top: none;
-    border-radius: 8px;
-}
-
-.notification-default-action {
-    margin: 0;
-    padding: 0;
-    border-radius: 8px;
-}
-
-.widget-title {
-    color: #ebdbb2;
-    background: #282828;
-    padding: 5px 10px;
-    margin: 10px 10px 5px 10px;
-    font-size: 1.5rem;
-    border-radius: 8px;
-}
-
-.widget-title>button {
-    font-size: 1rem;
-    color: #282828;
-    text-shadow: none;
-    background: #fe8019;
-    box-shadow: none;
-    border-radius: 8px;
-}
-
-.widget-title>button:hover {
-    background: #d65d0e;
-}
-
-.widget-dnd {
-    background: #282828;
-    padding: 5px 10px;
-    margin: 5px 10px 10px 10px;
-    border-radius: 8px;
-    font-size: large;
-    color: #ebdbb2;
-}
-
-.widget-dnd>switch {
-    border-radius: 8px;
-    background: #3c3836;
-}
-
-.widget-dnd>switch:checked {
-    background: #fe8019;
-}
-
-.widget-dnd>switch slider {
-    background: #ebdbb2;
-    border-radius: 8px;
-}
-
+/* --- PANEL PRINCIPAL (CONTROL CENTER) --- */
 .control-center {
-    background: #1d2021;
-    border: 2px solid #fe8019;
-    border-radius: 8px;
+    background: alpha(@background, 0.8);
+    border: 2px solid @color9;
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .control-center-list {
     background: transparent;
+}
+
+/* --- NOTIFICACIONES --- */
+.notification {
+    background: alpha(@background, 0.7);
+    padding: 0;
+    margin: 8px;
+    border-radius: 15px;
+    border: 1px solid alpha(@color9, 0.5);
+    color: @foreground;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.notification-row:focus,
+.notification-row:hover {
+    background: alpha(@color8, 0.1);
+    border-radius: 15px;
+}
+
+.notification-content {
+    background: transparent;
+    padding: 12px;
+}
+
+.close-button {
+    background: @color1;
+    color: @background;
+    text-shadow: none;
+    padding: 2px;
+    border-radius: 50%;
+    margin-top: 8px;
+    margin-right: 8px;
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.close-button:hover {
+    background: @color9;
+}
+
+/* --- WIDGETS --- */
+.widget-title {
+    color: @color9;
+    background: alpha(@background, 0.5);
+    padding: 10px;
+    margin: 15px 15px 5px 15px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    border-radius: 12px;
+}
+
+.widget-title > button {
+    font-size: 0.9rem;
+    color: @background;
+    background: @color9;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.widget-title > button:hover {
+    background: @color3;
+}
+
+.widget-dnd {
+    background: alpha(@background, 0.5);
+    padding: 10px;
+    margin: 5px 15px 15px 15px;
+    border-radius: 12px;
+    color: @foreground;
+}
+
+.widget-dnd > switch {
+    border-radius: 15px;
+    background: @color8;
+}
+
+.widget-dnd > switch:checked {
+    background: @color9;
+}
+
+.widget-dnd > switch slider {
+    background: @foreground;
+    border-radius: 15px;
 }

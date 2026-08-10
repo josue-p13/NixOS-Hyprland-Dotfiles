@@ -6,13 +6,28 @@
     "margin-top": 5,
     "margin-left": 10,
     "margin-right": 10,
-    "modules-left": ["custom/activities", "hyprland/workspaces"],
+    "modules-left": ["custom/nixos", "hyprland/workspaces", "custom/cava"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "bluetooth", "network", "battery", "custom/monitor", "custom/nightlight", "custom/notification", "tray"],
+    "modules-right": ["pulseaudio", "bluetooth", "network", "battery", "custom/powerprofile", "custom/monitor", "custom/nightlight", "custom/notification", "tray"],
     
-    "custom/activities": {
-        "format": "Activities",
-        "on-click": "hyprctl dispatch hyprexpo:expo toggle",
+    "custom/powerprofile": {
+        "format": "🍃",
+        "on-click": "/home/josue/.config/waybar/scripts/toggle-powerprofile.sh",
+        "tooltip": true,
+        "tooltip-format": "Cambiar perfil de energía"
+    },
+
+    "custom/nixos": {
+        "format": "",
+        "on-click": "nwg-drawer -wm hyprland -s /home/josue/.config/nwg-drawer/drawer.css",
+        "tooltip": false
+    },
+
+    "custom/cava": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "/home/josue/.config/waybar/scripts/waybar-cava.py",
+        "restart-interval": 1,
         "tooltip": false
     },
 
@@ -27,6 +42,11 @@
             "3": "3",
             "4": "4",
             "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -35,7 +55,8 @@
     
     "clock": {
         "format": " {:%H:%M   %d/%m}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "dbus-send --session --type=method_call --dest=org.josue.dashboard /org/josue/dashboard org.josue.dashboard.toggle"
     },
     
     "battery": {
@@ -58,16 +79,17 @@
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "blueman-manager"
+        "on-click": "/home/josue/.config/hypr/scripts/bluetooth-menu.sh"
     },
     
     "network": {
         "format-wifi": "",
         "format-ethernet": "󰈀",
         "tooltip-format": "󰈀 {ifname} via {gwaddr}\nIP: {ipaddr}",
+        "tooltip-format-wifi": " {essid} ({signalStrength}%)\nIP: {ipaddr}",
         "format-linked": "󰈀 {ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "on-click": "/home/josue/.config/hypr/scripts/wifi-menu.sh"
     },
     
     "pulseaudio": {
@@ -84,7 +106,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "bash -l -c 'python3 /home/josue/.config/hypr/scripts/audio-switch.py'",
+        "on-click": "/home/josue/.config/hypr/scripts/audio-menu.sh",
     },
 
     "custom/monitor": {

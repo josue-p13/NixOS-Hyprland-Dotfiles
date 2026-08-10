@@ -6,7 +6,7 @@ Hibernar
 Suspender
 Cerrar Sesion"
 
-seleccion=$(echo -e "$opciones" | wofi -d -p "Power" 2>/dev/null)
+seleccion=$(echo -e "$opciones" | wofi -d -p "Power" --style "/home/josue/.config/wofi/style.css" 2>/dev/null)
 
 case "$seleccion" in
     Apagar)

@@ -1,6 +1,27 @@
+/* nwg-drawer template */
+@define-color color0 #524B4A;
+@define-color color1 #4C7A5D;
+@define-color color2 #AE5858;
+@define-color color3 #928374;
+@define-color color4 #7DAEA3;
+@define-color color5 #E9B143;
+@define-color color6 #D3D5B8;
+@define-color color7 #E0E2D3;
+@define-color color8 #9D9E94;
+@define-color color9 #4C7A5D;
+@define-color color10 #AE5858;
+@define-color color11 #928374;
+@define-color color12 #7DAEA3;
+@define-color color13 #E9B143;
+@define-color color14 #D3D5B8;
+@define-color color15 #E0E2D3;
+
+@define-color background #2C2625;
+@define-color foreground #F0F0E6;
+
 window {
-    background-color: #282828;
-    color: #ebdbb2;
+    background-color: alpha(@background, 0.85);
+    color: @foreground;
 }
 
 box {
@@ -8,28 +29,43 @@ box {
 }
 
 entry {
-    background-color: #3c3836;
-    color: #ebdbb2;
-    border: 2px solid #fe8019;
-    border-radius: 20px;
+    background-color: alpha(@color0, 0.3);
+    color: @foreground;
+    border: 1px solid alpha(@color9, 0.5);
+    border-radius: 15px;
     margin: 20px;
+    padding: 10px;
+}
+
+entry:focus {
+    border: 2px solid @color9;
 }
 
 button {
     background-color: transparent;
-    color: #ebdbb2;
-    border-radius: 10px;
+    color: @foreground;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 5px;
+    transition: all 0.2s ease;
 }
 
 button:hover {
-    background-color: #504945;
+    background-color: alpha(@color9, 0.2);
+    border: 1px solid @color9;
 }
 
 label {
-    color: #ebdbb2;
+    color: @foreground;
+    font-weight: 700;
 }
 
 #category-button:checked {
-    background-color: #fe8019;
-    color: #282828;
+    background-color: @color9;
+    color: @background;
+    border-radius: 12px;
+}
+
+#category-button:hover {
+    background-color: alpha(@color9, 0.4);
 }

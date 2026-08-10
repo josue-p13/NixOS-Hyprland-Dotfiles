@@ -1,0 +1,122 @@
+# Yazi Theme Template for Wallust (Gruvbox dynamic)
+#:schema https://yazi-rs.github.io/schemas/theme.json
+
+[flavor]
+dark  = ""
+light = ""
+
+[app]
+overall = {}
+
+[mgr]
+cwd = { fg = "#D3D5B8" }
+
+# Find
+find_keyword  = { fg = "#928374", bold = true, italic = true, underline = true }
+find_position = { fg = "#E9B143", bg = "reset", bold = true, italic = true }
+
+# Symlink
+symlink_target = { fg = "#D3D5B8", italic = true }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#524B4A" }
+
+# Marker
+marker_copied   = { fg = "#928374", bg = "#928374" }
+marker_cut      = { fg = "#7DAEA3", bg = "#7DAEA3" }
+marker_marked   = { fg = "#D3D5B8", bg = "#D3D5B8" }
+marker_selected = { fg = "#E9B143", bg = "#E9B143" }
+
+# Count
+count_copied   = { fg = "#2C2625", bg = "#928374" }
+count_cut      = { fg = "#2C2625", bg = "#7DAEA3" }
+count_selected = { fg = "#2C2625", bg = "#E9B143" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#524B4A", bg = "#524B4A" }
+
+# Permissions
+perm_sep   = { fg = "#9D9E94" }
+perm_type  = { fg = "#4C7A5D" }
+perm_read  = { fg = "#928374" }
+perm_write = { fg = "#7DAEA3" }
+perm_exec  = { fg = "#E9B143" }
+
+# Progress
+progress_label  = { fg = "#F0F0E6", bold = true }
+progress_normal = { fg = "#928374", bg = "#524B4A" }
+progress_error  = { fg = "#7DAEA3", bg = "#524B4A" }
+
+# Mode colors
+[mode]
+normal_main = { fg = "#2C2625", bg = "#4C7A5D", bold = true }
+normal_alt  = { fg = "#4C7A5D", bg = "#524B4A" }
+
+select_main = { fg = "#2C2625", bg = "#E9B143", bold = true }
+select_alt  = { fg = "#E9B143", bg = "#524B4A" }
+
+unset_main  = { fg = "#2C2625", bg = "#7DAEA3", bold = true }
+unset_alt   = { fg = "#7DAEA3", bg = "#524B4A" }
+
+[pick]
+border   = { fg = "#4C7A5D" }
+active   = { fg = "#E9B143", bold = true }
+inactive = {}
+
+[input]
+border   = { fg = "#4C7A5D" }
+title    = { fg = "#4C7A5D" }
+value    = {}
+selected = { reversed = true }
+
+[confirm]
+border     = { fg = "#4C7A5D" }
+title      = { fg = "#4C7A5D" }
+body       = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+
+[cmp]
+border   = { fg = "#4C7A5D" }
+active   = { reversed = true }
+inactive = {}
+
+[tasks]
+border  = { fg = "#4C7A5D" }
+title   = { fg = "#4C7A5D" }
+hovered = { fg = "#E9B143", bold = true }
+
+[which]
+mask            = { bg = "#2C2625" }
+cand            = { fg = "#D3D5B8" }
+rest            = { fg = "#9D9E94" }
+desc            = { fg = "#E9B143" }
+separator_style = { fg = "#9D9E94" }
+
+[help]
+border  = { fg = "#4C7A5D" }
+chord   = { fg = "#D3D5B8" }
+hovered = { reversed = true, bold = true }
+
+[filetype]
+rules = [
+	# Directory
+	{ url = "*/", fg = "#4C7A5D", bold = true },
+	# Executable
+	{ url = "*", is = "exec", fg = "#928374" },
+	# Image
+	{ mime = "image/*", fg = "#E9B143" },
+	# Media
+	{ mime = "{audio,video}/*", fg = "#E9B143" },
+	# Archive
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#7DAEA3" },
+	# Document
+	{ mime = "application/{pdf,doc,rtf,docx,xls,xlsx,ppt,pptx}", fg = "#D3D5B8" },
+	# Special / Temp / Hidden
+	{ url = "*~", fg = "#9D9E94" },
+	{ url = "*", is = "orphan", fg = "#7DAEA3", bg = "#524B4A" },
+]

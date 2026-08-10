@@ -1,0 +1,71 @@
+/* nwg-drawer template */
+@define-color color0 {{color0}};
+@define-color color1 {{color1}};
+@define-color color2 {{color2}};
+@define-color color3 {{color3}};
+@define-color color4 {{color4}};
+@define-color color5 {{color5}};
+@define-color color6 {{color6}};
+@define-color color7 {{color7}};
+@define-color color8 {{color8}};
+@define-color color9 {{color9}};
+@define-color color10 {{color10}};
+@define-color color11 {{color11}};
+@define-color color12 {{color12}};
+@define-color color13 {{color13}};
+@define-color color14 {{color14}};
+@define-color color15 {{color15}};
+
+@define-color background {{background}};
+@define-color foreground {{foreground}};
+
+window {
+    background-color: alpha(@background, 0.85);
+    color: @foreground;
+}
+
+box {
+    background-color: transparent;
+}
+
+entry {
+    background-color: alpha(@color0, 0.3);
+    color: @foreground;
+    border: 1px solid alpha(@color9, 0.5);
+    border-radius: 15px;
+    margin: 20px;
+    padding: 10px;
+}
+
+entry:focus {
+    border: 2px solid @color9;
+}
+
+button {
+    background-color: transparent;
+    color: @foreground;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 5px;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: alpha(@color9, 0.2);
+    border: 1px solid @color9;
+}
+
+label {
+    color: @foreground;
+    font-weight: 700;
+}
+
+#category-button:checked {
+    background-color: @color9;
+    color: @background;
+    border-radius: 12px;
+}
+
+#category-button:hover {
+    background-color: alpha(@color9, 0.4);
+}

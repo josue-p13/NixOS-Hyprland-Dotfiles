@@ -1,8 +1,10 @@
 mode=drun
 show=drun
 width=600
-height=350
+height=400
 allow_markup=true
+allow_images=true
+image_size=32
 no_actions=true
 halign=fill
 orientation=vertical

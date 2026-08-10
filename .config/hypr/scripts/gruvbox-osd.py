@@ -4,11 +4,36 @@ import gi
 import sys
 import os
 import signal
+import json
 gi.require_version('Gtk', '3.0')
 gi.require_version('GtkLayerShell', '0.1')
 from gi.repository import Gtk, GtkLayerShell, GLib, Gio, Gdk
 
 FIFO_PATH = "/tmp/gruvbox_osd_fifo"
+
+def get_colors():
+    cache_file = os.path.expanduser("~/.cache/wallust/colors.json")
+    c = {
+        "bg": "#282828",
+        "fg": "#ebdbb2", "orange": "#fe8019", "yellow": "#fabd2f", "bg2": "#3c3836"
+    }
+    if os.path.exists(cache_file):
+        try:
+            with open(cache_file, "r") as f:
+                w = json.load(f)
+                cl = w['colors']
+                c.update({
+                    "bg": w['background'],
+                    "fg": w['foreground'], "orange": cl['color9'], "yellow": cl['color3'], "bg2": cl['color8']
+                })
+        except: pass
+    return c
+
+def hex_to_rgba(hex_color, alpha):
+    hex_color = hex_color.lstrip('#')
+    lv = len(hex_color)
+    rgb = tuple(int(hex_color[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+    return f"rgba({rgb[0]}, {rgb[1]}, {rgb[2]}, {alpha})"
 
 class OSD(Gtk.Window):
     def __init__(self):
@@ -19,37 +44,40 @@ class OSD(Gtk.Window):
         GtkLayerShell.set_anchor(self, GtkLayerShell.Edge.BOTTOM, True)
         GtkLayerShell.set_margin(self, GtkLayerShell.Edge.BOTTOM, 120)
         
-        # CSS Gruvbox
+        # CSS dinámico
+        colors = get_colors()
+        bg_color = hex_to_rgba(colors['bg'], 0.95)
+
         css_provider = Gtk.CssProvider()
-        css = b"""
-        window {
-            background-color: rgba(40, 40, 40, 0.95);
-            border: 2px solid #fe8019;
+        css = f"""
+        window {{
+            background-color: {bg_color};
+            border: 2px solid {colors['orange']};
             border-radius: 20px;
-        }
-        box {
+        }}
+        box {{
             padding: 12px 24px;
-        }
-        label {
+        }}
+        label {{
             font-size: 24px;
-            color: #ebdbb2;
+            color: {colors['fg']};
             margin-right: 15px;
             font-family: "JetBrains Mono", "Fira Code", monospace;
-        }
-        progressbar {
+        }}
+        progressbar {{
             min-height: 12px;
-        }
-        progressbar trough {
-            background-color: #3c3836;
+        }}
+        progressbar trough {{
+            background-color: {colors['bg2']};
             border-radius: 10px;
             min-height: 12px;
             min-width: 220px;
-        }
-        progressbar progress {
-            background-color: #fabd2f;
+        }}
+        progressbar progress {{
+            background-color: {colors['yellow']};
             border-radius: 10px;
-        }
-        """
+        }}
+        """.encode()
         css_provider.load_from_data(css)
         Gtk.StyleContext.add_provider_for_screen(
             Gdk.Screen.get_default(), 

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
+  "name": "Wallust Dynamic Theme",
+  "author": "Josue Setup",
+  "themes": [
+    {
+      "name": "Wallust",
+      "appearance": "dark",
+      "style": {
+        "background": "{{background}}d8",
+        "foreground": "{{foreground}}",
+        "accent": "{{color5}}",
+        "border": "{{color0}}",
+        "border.variant": "{{color0}}",
+        "editor.background": "{{background}}c0",
+        "editor.foreground": "{{foreground}}",
+        "editor.gutter.background": "{{background}}00",
+        "editor.gutter.foreground": "{{color8}}",
+        "editor.line_number": "{{color8}}",
+        "editor.active_line_number": "{{color15}}",
+        "editor.line.background": "{{color0}}22",
+        "editor.active_line.background": "{{color0}}44",
+        "editor.selection.background": "{{color5}}33",
+        "editor.wrap_guide.background": "{{color0}}",
+        "tab.active.background": "{{background}}88",
+        "tab.active.border": "{{color5}}",
+        "tab.inactive.background": "{{background}}aa",
+        "tab.inactive.foreground": "{{color8}}",
+        "status_bar.background": "{{background}}f2",
+        "title_bar.background": "{{background}}f2",
+        "sidebar.background": "{{background}}e6",
+        "panel.background": "{{background}}e6",
+        "syntax": {
+          "comment": { "color": "{{color8}}", "font_style": "italic" },
+          "string": { "color": "{{color3}}" },
+          "string.escape": { "color": "{{color5}}" },
+          "string.regex": { "color": "{{color5}}" },
+          "number": { "color": "{{color13}}" },
+          "boolean": { "color": "{{color13}}" },
+          "keyword": { "color": "{{color4}}", "font_weight": 700 },
+          "function": { "color": "{{color1}}" },
+          "variable": { "color": "{{color7}}" },
+          "type": { "color": "{{color5}}" },
+          "constant": { "color": "{{color13}}" },
+          "property": { "color": "{{color6}}" },
+          "tag": { "color": "{{color4}}" },
+          "attribute": { "color": "{{color1}}" },
+          "constructor": { "color": "{{color5}}" },
+          "embedded": { "color": "{{foreground}}" }
+        }
+      }
+    }
+  ]
+}

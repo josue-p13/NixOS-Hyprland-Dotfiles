@@ -1,97 +1,139 @@
+@import "../../.cache/wallust/colors-waybar.css";
+
+/* --- CONFIGURACIÓN GLOBAL --- */
 * {
     border: none;
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font", "Roboto", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 800;
     min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    color: #ebdbb2;
+    color: @foreground;
 }
 
 tooltip {
-    background: #282828;
-    border: 2px solid #fe8019;
-    border-radius: 8px;
+    background: alpha(@background, 0.9);
+    border: 2px solid @color9;
+    border-radius: 12px;
 }
+
 tooltip label {
-    color: #ebdbb2;
+    color: @foreground;
+    padding: 8px;
 }
 
-#workspaces {
-    background: #282828;
-    border-radius: 8px;
-    margin: 0px 5px;
-    padding: 0px 5px;
-}
-
-#workspaces button {
-    padding: 0 5px;
-    color: #a89984;
-    border-radius: 8px;
-}
-
-#workspaces button.active {
-    color: #fe8019;
-}
-
-#workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-    background: #3c3836;
-}
-
+/* --- ESTILO DE MÓDULOS (ISLAS) --- */
+#workspaces,
+#custom-cava,
 #clock,
 #battery,
 #network,
 #pulseaudio,
 #bluetooth,
 #custom-monitor,
-#custom-activities,
+#custom-nixos,
 #custom-nightlight,
 #custom-notification,
-#tray {
-    background: #282828;
-    padding: 0 12px;
-    margin: 0 4px;
-    border-radius: 8px;
-    color: #ebdbb2;
+#tray,
+#custom-powerprofile {
+    background: alpha(@background, 0.75);
+    color: @foreground;
+    padding: 0 14px;
+    margin: 4px 4px;
+    border-radius: 15px;
+    border: 1px solid alpha(@color9, 0.3);
+    transition: all 0.3s ease;
 }
 
-#custom-activities {
-    color: #fe8019;
+/* --- HOVERS PARA INTERACTIVIDAD --- */
+#workspaces:hover,
+#custom-cava:hover,
+#clock:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#custom-monitor:hover,
+#custom-nixos:hover,
+#custom-nightlight:hover,
+#custom-notification:hover,
+#tray:hover {
+    background: alpha(@background, 0.9);
+    border: 1px solid @color9;
+}
+
+/* --- WORKSPACES --- */
+#workspaces {
+    padding: 0 5px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: alpha(@foreground, 0.4);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: @color9;
+    background: alpha(@color9, 0.15);
+}
+
+#workspaces button.urgent {
+    color: @color1;
+}
+
+#workspaces button:hover {
+    color: @color11;
+    background: alpha(@color11, 0.1);
+}
+
+/* --- COLORES POR MÓDULO --- */
+#custom-nixos {
+    color: @color9;
+    font-size: 17px;
+    font-weight: 900;
     margin-right: 8px;
-}
-
-#bluetooth {
-    color: #83a598;
-}
-
-#custom-monitor {
-    color: #8ec07c;
-}
-
-#custom-nightlight {
-    color: #fabd2f;
+    padding-left: 14px;
+    padding-right: 20px;
 }
 
 #clock {
-    color: #fabd2f;
+    color: @color3;
+}
+
+#pulseaudio {
+    color: @color5;
+}
+
+#pulseaudio.muted {
+    color: @color8;
+}
+
+#bluetooth {
+    color: @color4;
+}
+
+#network {
+    color: @color12;
+    padding-left: 12px;
+    padding-right: 16px;
 }
 
 #battery {
-    color: #b8bb26;
+    color: @color10;
 }
 
 #battery.warning {
-    color: #fe8019;
+    color: @color9;
 }
 
-#battery.critical {
-    color: #fb4934;
+#battery.critical:not(.charging) {
+    color: @color1;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -101,23 +143,51 @@ tooltip label {
 
 @keyframes blink {
     to {
-        background-color: #fb4934;
-        color: #282828;
+        background-color: @color1;
+        color: @background;
     }
 }
 
-#network {
-    color: #83a598;
+#custom-monitor {
+    color: @color2;
+    padding-left: 12px;
+    padding-right: 16px;
+}
+#custom-nightlight { color: @color3; }
+#custom-notification { color: @color3; }
+#custom-powerprofile { color: @color11; }
+
+#tray {
+    margin-right: 8px;
+    min-width: 40px;
 }
 
-#pulseaudio {
-    color: #d3869b;
+#tray > widget > button {
+    border: none;
+    background: alpha(@color9, 0.3);
+    margin: 0 2px;
 }
 
-#pulseaudio.muted {
-    color: #928374;
+#tray > widget > button:hover {
+    background: alpha(@color9, 0.5);
 }
 
-#custom-notification {
-    color: #fabd2f;
+/* --- CAVA VISUALIZER --- */
+#custom-cava {
+    color: @color9;
+    font-size: 15px;
+    letter-spacing: 2px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    min-width: 80px;
+}
+
+#custom-cava.silent {
+    opacity: 0;
+    padding: 0;
+    margin: 4px 0;
+    border: 1px solid transparent;
+    background: transparent;
+    min-width: 0;
+    font-size: 0px;
 }

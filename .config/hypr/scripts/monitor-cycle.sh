@@ -1,9 +1,32 @@
 #!/usr/bin/env bash
 
 INTERNAL="eDP-1"
-EXTERNAL="HDMI-A-2"
 
-# Detectar estado actual
+# Detectar monitor externo conectado de forma dinámica
+EXTERNAL=""
+EXT_CONNECTED="disconnected"
+for status_file in /sys/class/drm/card*/status; do
+    if [ "$(cat "$status_file" 2>/dev/null)" = "connected" ]; then
+        conn_name=$(basename "$(dirname "$status_file")" | sed -E 's/card[0-9]+-//')
+        if [ "$conn_name" != "$INTERNAL" ]; then
+            EXTERNAL="$conn_name"
+            EXT_CONNECTED="connected"
+            break
+        fi
+    fi
+done
+
+if [ -z "$EXTERNAL" ]; then
+    # Buscar algún puerto HDMI físico disponible como fallback
+    HDMI_PORT=$(ls /sys/class/drm/card*-HDMI-A-*/status 2>/dev/null | head -1)
+    if [ -n "$HDMI_PORT" ]; then
+        EXTERNAL=$(basename "$(dirname "$HDMI_PORT")" | sed -E 's/card[0-9]+-//')
+    else
+        EXTERNAL="HDMI-A-2" # fallback absoluto
+    fi
+fi
+
+# Detectar estado actual de la pantalla interna
 INT_ACTIVE=$(hyprctl monitors -j | python3 -c "
 import json, sys
 for m in json.load(sys.stdin):
@@ -12,9 +35,7 @@ for m in json.load(sys.stdin):
 sys.exit(1)
 " 2>/dev/null && echo 1 || echo 0)
 
-# Detectar ruta del monitor externo dinámicamente
-EXT_STATUS_FILE=$(ls /sys/class/drm/card*-HDMI-A-2/status 2>/dev/null | head -n 1)
-EXT_CONNECTED=$(cat "$EXT_STATUS_FILE" 2>/dev/null)
+# Detectar si el monitor externo está activo en Hyprland
 EXT_ACTIVE=$(hyprctl monitors -j | python3 -c "
 import json, sys
 for m in json.load(sys.stdin):

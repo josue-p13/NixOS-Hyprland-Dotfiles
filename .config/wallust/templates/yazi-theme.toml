@@ -1,0 +1,122 @@
+# Yazi Theme Template for Wallust (Gruvbox dynamic)
+#:schema https://yazi-rs.github.io/schemas/theme.json
+
+[flavor]
+dark  = ""
+light = ""
+
+[app]
+overall = {}
+
+[mgr]
+cwd = { fg = "{{color6}}" }
+
+# Find
+find_keyword  = { fg = "{{color3}}", bold = true, italic = true, underline = true }
+find_position = { fg = "{{color5}}", bg = "reset", bold = true, italic = true }
+
+# Symlink
+symlink_target = { fg = "{{color6}}", italic = true }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "{{color0}}" }
+
+# Marker
+marker_copied   = { fg = "{{color3}}", bg = "{{color3}}" }
+marker_cut      = { fg = "{{color4}}", bg = "{{color4}}" }
+marker_marked   = { fg = "{{color6}}", bg = "{{color6}}" }
+marker_selected = { fg = "{{color5}}", bg = "{{color5}}" }
+
+# Count
+count_copied   = { fg = "{{background}}", bg = "{{color3}}" }
+count_cut      = { fg = "{{background}}", bg = "{{color4}}" }
+count_selected = { fg = "{{background}}", bg = "{{color5}}" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "{{color0}}", bg = "{{color0}}" }
+
+# Permissions
+perm_sep   = { fg = "{{color8}}" }
+perm_type  = { fg = "{{color1}}" }
+perm_read  = { fg = "{{color3}}" }
+perm_write = { fg = "{{color4}}" }
+perm_exec  = { fg = "{{color5}}" }
+
+# Progress
+progress_label  = { fg = "{{foreground}}", bold = true }
+progress_normal = { fg = "{{color3}}", bg = "{{color0}}" }
+progress_error  = { fg = "{{color4}}", bg = "{{color0}}" }
+
+# Mode colors
+[mode]
+normal_main = { fg = "{{background}}", bg = "{{color1}}", bold = true }
+normal_alt  = { fg = "{{color1}}", bg = "{{color0}}" }
+
+select_main = { fg = "{{background}}", bg = "{{color5}}", bold = true }
+select_alt  = { fg = "{{color5}}", bg = "{{color0}}" }
+
+unset_main  = { fg = "{{background}}", bg = "{{color4}}", bold = true }
+unset_alt   = { fg = "{{color4}}", bg = "{{color0}}" }
+
+[pick]
+border   = { fg = "{{color1}}" }
+active   = { fg = "{{color5}}", bold = true }
+inactive = {}
+
+[input]
+border   = { fg = "{{color1}}" }
+title    = { fg = "{{color1}}" }
+value    = {}
+selected = { reversed = true }
+
+[confirm]
+border     = { fg = "{{color1}}" }
+title      = { fg = "{{color1}}" }
+body       = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+
+[cmp]
+border   = { fg = "{{color1}}" }
+active   = { reversed = true }
+inactive = {}
+
+[tasks]
+border  = { fg = "{{color1}}" }
+title   = { fg = "{{color1}}" }
+hovered = { fg = "{{color5}}", bold = true }
+
+[which]
+mask            = { bg = "{{background}}" }
+cand            = { fg = "{{color6}}" }
+rest            = { fg = "{{color8}}" }
+desc            = { fg = "{{color5}}" }
+separator_style = { fg = "{{color8}}" }
+
+[help]
+border  = { fg = "{{color1}}" }
+chord   = { fg = "{{color6}}" }
+hovered = { reversed = true, bold = true }
+
+[filetype]
+rules = [
+	# Directory
+	{ url = "*/", fg = "{{color1}}", bold = true },
+	# Executable
+	{ url = "*", is = "exec", fg = "{{color3}}" },
+	# Image
+	{ mime = "image/*", fg = "{{color5}}" },
+	# Media
+	{ mime = "{audio,video}/*", fg = "{{color13}}" },
+	# Archive
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "{{color4}}" },
+	# Document
+	{ mime = "application/{pdf,doc,rtf,docx,xls,xlsx,ppt,pptx}", fg = "{{color6}}" },
+	# Special / Temp / Hidden
+	{ url = "*~", fg = "{{color8}}" },
+	{ url = "*", is = "orphan", fg = "{{color4}}", bg = "{{color0}}" },
+]

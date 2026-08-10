@@ -1,0 +1,51 @@
+/* GTK4 / Libadwaita theme template for wallust */
+
+@define-color window_bg_color {{background}};
+@define-color window_fg_color {{foreground}};
+@define-color view_bg_color {{background}};
+@define-color view_fg_color {{foreground}};
+@define-color headerbar_bg_color {{color0}};
+@define-color headerbar_fg_color {{foreground}};
+@define-color card_bg_color {{color0}};
+@define-color card_fg_color {{foreground}};
+@define-color popover_bg_color {{color0}};
+@define-color popover_fg_color {{foreground}};
+@define-color dialog_bg_color {{background}};
+@define-color dialog_fg_color {{foreground}};
+
+/* Accent / Selection colors */
+@define-color accent_color {{color9}};
+@define-color accent_bg_color {{color9}};
+@define-color accent_fg_color {{background}};
+@define-color selected_bg_color {{color9}};
+@define-color selected_fg_color {{background}};
+
+/* Sidebar */
+@define-color sidebar_bg_color {{background}};
+@define-color sidebar_fg_color {{foreground}};
+
+/* States */
+@define-color destructive_color {{color1}};
+@define-color destructive_bg_color {{color1}};
+@define-color destructive_fg_color {{foreground}};
+@define-color success_color {{color2}};
+@define-color success_bg_color {{color2}};
+@define-color success_fg_color {{foreground}};
+@define-color warning_color {{color3}};
+@define-color warning_bg_color {{color3}};
+@define-color warning_fg_color {{foreground}};
+
+/* Make backgrounds transparent so Hyprland's opacity rule looks clean and consistent */
+window,
+.background,
+.sidebar,
+notebook,
+stack,
+scrolledwindow,
+viewport {
+    background-color: transparent;
+}
+/* If transparent background is used, we might want to ensure text is legible */
+label {
+    text-shadow: none;
+}

@@ -35,7 +35,7 @@ link_file() {
 
 # --- ENLAZAR CARPETAS DE CONFIGURACIÓN ---
 echo "📂 Enlazando aplicaciones en .config..."
-for app in hypr waybar swaync wofi nwg-drawer ghostty gtk-3.0 gtk-4.0; do
+for app in hypr waybar swaync wofi nwg-drawer ghostty gtk-3.0 gtk-4.0 wallust yazi zed; do
     if [ -d "$DOTFILES_DIR/.config/$app" ]; then
         link_file "$DOTFILES_DIR/.config/$app" "$CONFIG_DIR/$app"
     fi

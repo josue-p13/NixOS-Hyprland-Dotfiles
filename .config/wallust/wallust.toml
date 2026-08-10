@@ -1,0 +1,51 @@
+# wallust.toml - Configuración para temas dinámicos
+
+backend = "full"
+color_space = "lab"
+threshold = 11
+
+[entry]
+dither = true
+pywal = true
+
+[templates]
+# Waybar: Genera variables CSS
+waybar = { src = "colors-waybar.css", dst = "~/.cache/wallust/colors-waybar.css" }
+
+# Hyprland: Genera variables de configuración
+hyprland = { src = "colors-hyprland.conf", dst = "~/.cache/wallust/colors-hyprland.conf" }
+
+# JSON: Para que los scripts de Python lean los colores
+json = { src = "colors.json", dst = "~/.cache/wallust/colors.json" }
+
+# Colors: Para la extensión de VSCode
+colors = { src = "colors", dst = "~/.cache/wallust/colors" }
+
+# SwayNC: Centro de notificaciones
+swaync = { src = "colors-swaync.css", dst = "~/.cache/wallust/colors-swaync.css" }
+
+# Neovim (NvChad): Tema dinámico
+nvim = { src = "nvim.lua", dst = "~/.config/nvim/lua/themes/wallust.lua" }
+
+# Ghostty: Tema dinámico
+ghostty = { src = "ghostty.theme", dst = "~/.config/ghostty/themes/wallust" }
+
+# nwg-drawer: Lanzador de aplicaciones
+nwg_drawer = { src = "drawer.css", dst = "~/.config/nwg-drawer/drawer.css" }
+
+# btop: Monitor de sistema
+btop = { src = "btop.theme", dst = "~/.config/btop/themes/wallust.theme" }
+
+# GTK4 (Nautilus, etc.)
+gtk4 = { src = "gtk-4.0.css", dst = "~/.config/gtk-4.0/gtk.css" }
+
+# Starship: Dynamic terminal prompt
+starship = { src = "starship.toml", dst = "~/.config/starship.toml" }
+
+# Yazi: File manager theme
+yazi = { src = "yazi-theme.toml", dst = "~/.config/yazi/theme.toml" }
+
+# Zed: Text editor theme
+zed = { src = "zed-theme.json", dst = "~/.config/zed/themes/wallust.json" }
+
+
